@@ -1,10 +1,13 @@
 <?php
 
 $email="test@test.com";
+$needle=".com";
 
-if(strpos($email,".com") === 0) {
-	echo "yes";
+function str_ends_with($email, $needle){
+    return substr_compare($haystack, $needle, -strlen($needle)) 
+           === 0;
 }
-else echo "no";
+
+str_ends_with($email,);
 
 ?>
