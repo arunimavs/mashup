@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Jquery</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+<script type="text/javascript">
+x=0;
+	$(document).ready(function(){
+    		                        $("#bt4").click(function()            {
+        	                         var s= $("#test").val();
+        	                        $("#test").val('');
+        	                        $("#e").append("<li>"+s+"<button style='margin-left:50px;width:50px;height:30px;' class='bt2'>Done</button>"+"<br><br>");
+                                  $("p").text( x+= 1);
+                                  $("p").append(" program included"+"<button style='margin-left:50px;width:100px;height:30px;' id='bt1'>Complete</button");              
+                                  $("#bt1").click(function(){
+                                  $("#e,#bt1,p").remove();   });
+
+                                                                      });            
+                              });     
+          
+
+            $(document).on("click", "button.bt2" , function() {
+            $(this).parent().remove();
+            if(x>0)
+            {
+            $("p").text(--x);
+            $("p").append(" program included"+"<button style='margin-left:50px;width:100px;height:30px;' id='bt1'>Complete</button");
+             }
+             if(x==0)
+             {
+              $("#bt1,p").remove(); 
+             }                                                               
+        	$("#bt1").click(function(){
+        	 $("#e,#bt1,p").remove();}); 
+                                                              });     
+                                                      
+
+</script>
+    								
+
+
+<style>
+.oi{
+  	  border: 1px solid #bdc7d8;
+  	  width:192px;
+  	  height:37px;
+  	  padding:10px 8px;
+  	  border-radius:5px;
+  	  font-size: 18px;
+      margin:10px;
+      margin-top:30px;
+  	}
+
+  	.test3{
+  		font-size:30px;
+  		margin:15px;
+  	}
+  	.bt1{
+  		width:50px;
+  	}
+</style>
+<body style="margin-left:30%;margin-top:10%;background-color:#3bda00;text-align: center">
+	<div class="container">
+    <div class="row" style="text-align: center;width:500px;height:500;border:5px solid #9d0019;background-color: #f10026;">
+	   <input type="text" placeholder="enter program" class="oi" id="test" value ="">
+	   <button id="bt4"> Enter</button>
+	   <ul style="font-size:20px;margin-top:10px;color:#fdfdfd;" id="e"><br></ul>
+	   <p></p>
+</body>
+</html>
