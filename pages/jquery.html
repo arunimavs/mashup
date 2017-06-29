@@ -12,10 +12,11 @@ x=0;
         	                         var s= $("#test").val();
         	                        $("#test").val('');
         	                        $("#e").append("<li>"+s+"<button style='margin-left:50px;width:50px;height:30px;' class='bt2'>Done</button>"+"<br><br>");
-                                  $("p").text( x+= 1);
-                                  $("p").append(" program included"+"<button style='margin-left:50px;width:100px;height:30px;' id='bt1'>Complete</button");              
+                                  $("#r").text( x+= 1);
+                                  $("#r").append(" program included"+"<button style='margin-left:50px;width:100px;height:30px;' id='bt1'>Complete</button"); 
                                   $("#bt1").click(function(){
-                                  $("#e,#bt1,p").remove();   });
+                                  $("#e,#bt1,#r").remove();   });             
+                                  
 
                                                                       });            
                               });     
@@ -25,15 +26,15 @@ x=0;
             $(this).parent().remove();
             if(x>0)
             {
-            $("p").text(--x);
-            $("p").append(" program included"+"<button style='margin-left:50px;width:100px;height:30px;' id='bt1'>Complete</button");
+            $("#r").text(--x);
+            $("#r").append(" program included"+"<button style='margin-left:50px;width:100px;height:30px;' id='bt1'>Complete</button");
              }
              if(x==0)
              {
-              $("#bt1,p").remove(); 
+              $("#bt1,#r").remove(); 
              }                                                               
         	$("#bt1").click(function(){
-        	 $("#e,#bt1,p").remove();}); 
+        	 $("#e,#bt1,#r").remove();}); 
                                                               });     
                                                       
 
@@ -67,6 +68,7 @@ x=0;
 	   <input type="text" placeholder="enter program" class="oi" id="test" value ="">
 	   <button id="bt4"> Enter</button>
 	   <ul style="font-size:20px;margin-top:10px;color:#fdfdfd;" id="e"><br></ul>
-	   <p></p>
+	   <span id="r"></span>
+     <p id="s"></p>
 </body>
 </html>
