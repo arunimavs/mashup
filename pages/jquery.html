@@ -1,41 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title> Jquery</title>
+<title> TO DO LIST</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 </script>
 <script type="text/javascript">
+
 x=0;
 	$(document).ready(function(){
-    		                        $("#bt4").click(function()            {
-        	                         var s= $("#test").val();
-        	                        $("#test").val('');
-        	                        $("#e").append("<li>"+s+"<button style='margin-left:50px;width:50px;height:30px;' class='bt2'>Done</button>"+"<br><br>");
-                                  $("#r").text( x+= 1);
-                                  $("#r").append(" program included"+"<button style='margin-left:50px;width:100px;height:30px;' id='bt1'>Complete</button"); 
-                                  $("#bt1").click(function(){
-                                  $("#e,#bt1,#r").remove();   });             
-                                  
+    
+    	$("#bt1").click(function(){
+      $("#r").append("<span id='s3'></span>");
+      $("#e").append("<p id='p1' class='list-group'></p>");
+      $(".bt4,#s2").remove();
+      var s= $("#test").val();
+      if(s!=""){
+      $("#test").val('');
+      $("#p1").append("<li style='font-size:20px;padding-top:5px;margin-top:10px;color:#353638;background-color:#eff2f7;width:490px;height:40px;align-items: center;margin-left:27%;border:1px solid #dcdcdc;'>"+s+"<button style='margin-left:50px;width:50px;height:30px;' class='bt2'>X</button>"+"<button style='margin-left:50px;width:100px;height:30px;' class='bt3'>Done</button><br><br>");
 
-                                                                      });            
-                              });     
-          
-
-            $(document).on("click", "button.bt2" , function() {
+      x=x+1;
+      }
+      if(x==1){
+      $("#s3").append("<span id='s2' >"+x+"&nbsp;&nbsp;thing to do</span>"+"<button style='margin-left:50px;width:100px;height:30px;' class='bt4'>Complete</button>"); 
+      }else{$("#s3").append("<span id='s2' >"+x+"&nbsp;&nbsp;things to do</span>"+"<button style='margin-left:50px;width:100px;height:30px;' class='bt4'>Complete</button>");} 
+      
+          $(document).on("click", "button.bt2" , function() {
+          $(this).parent().wrap("<strike style='color:green;'>");
+          }); 
+        
+      }); 
+    
+              $(document).on("click", "button.bt4" ,function(){
+              $("#s3,.bt4,#p1").remove();x=0;   
+              });   
+            $(document).on("click", "button.bt3" , function() {
             $(this).parent().remove();
+            $(document).on("click", "button.bt2" , function() {
+            $(this).parent().wrap("<strike>");});
             if(x>0)
             {
-            $("#r").text(--x);
-            $("#r").append(" program included"+"<button style='margin-left:50px;width:100px;height:30px;' id='bt1'>Complete</button");
+            x=x-1;
+            $(".bt4,#s2").remove();
+            if(x<2){
+            $("#s3").append("<span id='s2' >"+x +" &nbsp;&nbsp;thing to do</span>"+"<button style='margin-left:50px;width:100px;height:30px;' class='bt4'>Complete</button>");
+            }else{ $("#s3").append("<span id='s2'>"+x+" &nbsp;&nbsp;things to do</span>"+"<button style='margin-left:50px;width:100px;height:30px;' class='bt4'>Complete</button>");}
              }
              if(x==0)
              {
-              $("#bt1,#r").remove(); 
-             }                                                               
-        	$("#bt1").click(function(){
-        	 $("#e,#bt1,#r").remove();}); 
-                                                              });     
+              $(".bt4,#s2").remove(); 
+             }                                                              
+             });    
+                     
+                              });     
+          
+
+            
                                                       
 
 </script>
@@ -45,30 +67,24 @@ x=0;
 <style>
 .oi{
   	  border: 1px solid #bdc7d8;
-  	  width:192px;
-  	  height:37px;
-  	  padding:10px 8px;
-  	  border-radius:5px;
+  	  height:auto;
   	  font-size: 18px;
-      margin:10px;
-      margin-top:30px;
-  	}
+      
 
-  	.test3{
-  		font-size:30px;
-  		margin:15px;
   	}
-  	.bt1{
-  		width:50px;
-  	}
+    .ep{ width:500px;
+         padding:10px 8px;
+        }
+    .i{ background-color:#dcdcdc; 
+      width:500px;
+      margin-left: 29%
+      }
+  	
 </style>
-<body style="margin-left:30%;margin-top:10%;background-color:#3bda00;text-align: center">
-	<div class="container">
-    <div class="row" style="text-align: center;width:500px;height:500;border:5px solid #9d0019;background-color: #f10026;">
-	   <input type="text" placeholder="enter program" class="oi" id="test" value ="">
-	   <button id="bt4"> Enter</button>
-	   <ul style="font-size:20px;margin-top:10px;color:#fdfdfd;" id="e"><br></ul>
-	   <span id="r"></span>
-     <p id="s"></p>
+<body style="background-color:white;text-align: center">
+	   <input type="text" placeholder="Enter the things to do" class="oi ep" id="test" value ="" style="margin-top:50px;">
+	   <button id="bt1"> Enter</button>
+	   <ol  id="e"></ol>
+	   <p id="r"  class="oi i"></p>    
 </body>
 </html>
