@@ -10,60 +10,55 @@
 <script type="text/javascript">
 
 x=0;
-	$(document).ready(function(){
-    
-    	$("#bt1").click(function(){
+	$(document).ready(function(){ 
+    $("#bt1").click(function(){
       $("#r").append("<span id='s3'></span>");
       $("#e").append("<p id='p1' class='list-group'></p>");
-      $(".bt4,#s2").remove();
+      $(".complete,#s2").remove();
       var s= $("#test").val();
-      if(s!=""){
-      $("#test").val('');
-      $("#p1").append("<li style='font-size:20px;padding-top:5px;margin-top:10px;color:#353638;background-color:#eff2f7;width:490px;height:40px;align-items: center;margin-left:27%;border:1px solid #dcdcdc;'>"+s+"<button style='margin-left:50px;width:50px;height:30px;' class='bt2'>X</button>"+"<button style='margin-left:50px;width:100px;height:30px;' class='bt3'>Done</button><br><br>");
+        if(s!=""){
+        $("#test").val('');
+        $("#p1").append("<li class='es'><span id='s4'>"+s+"</span>"+
+        "<button style='margin-left:50px;width:100px;height:30px;' class='done'>Done</button>"+
+        "<button style='margin-left:50px;width:50px;height:30px;' class='X'>X</button><br><br>");
+        x=x+1;
+        }
+        if(x==1){
+        $("#s3").append("<span id='s2' >"+x+"&nbsp;&nbsp;thing to do</span>"+
+        "<button style='margin-left:50px;width:100px;height:30px;' class='complete'>Complete</button>"); 
+        }else{$("#s3").append("<span id='s2' >"+x+"&nbsp;&nbsp;things to do</span>"+
+        "<button style='margin-left:50px;width:100px;height:30px;' class='complete'>Complete</button>");
+        }       
+    }); 
 
-      x=x+1;
+    $(document).on("click", "button.complete" ,function(){
+      $("#s3,button.complete,#p1").remove();x=0;   
+    });   
+    $(document).on("click", "button.X" , function() {
+      $(this).parent().remove();
+      if(x>1){
+        x--;
+        $(".complete,#s2").remove();
+          if(x<2){
+            $("#s3").append("<span id='s2' >"+x +" &nbsp;&nbsp;thing to do</span>"+"<button style='margin-left:50px;width:100px;height:30px;' class='complete'>Complete</button>");
+          }else{ $("#s3").append("<span id='s2'>"+x+" &nbsp;&nbsp;things to do</span>"+"<button  style='margin-left:50px;width:100px;height:30px;' class='complete'>Complete</button>");
+          }
+          console.log('if');
       }
-      if(x==1){
-      $("#s3").append("<span id='s2' >"+x+"&nbsp;&nbsp;thing to do</span>"+"<button style='margin-left:50px;width:100px;height:30px;' class='bt4'>Complete</button>"); 
-      }else{$("#s3").append("<span id='s2' >"+x+"&nbsp;&nbsp;things to do</span>"+"<button style='margin-left:50px;width:100px;height:30px;' class='bt4'>Complete</button>");} 
-      
-          $(document).on("click", "button.bt2" , function() {
-          $(this).parent().wrap("<strike style='color:green;'>");
-          }); 
-        
-      }); 
-    
-              $(document).on("click", "button.bt4" ,function(){
-              $("#s3,.bt4,#p1").remove();x=0;   
-              });   
-            $(document).on("click", "button.bt3" , function() {
-            $(this).parent().remove();
-            $(document).on("click", "button.bt2" , function() {
-            $(this).parent().wrap("<strike>");});
-            if(x>0)
-            {
-            x=x-1;
-            $(".bt4,#s2").remove();
-            if(x<2){
-            $("#s3").append("<span id='s2' >"+x +" &nbsp;&nbsp;thing to do</span>"+"<button style='margin-left:50px;width:100px;height:30px;' class='bt4'>Complete</button>");
-            }else{ $("#s3").append("<span id='s2'>"+x+" &nbsp;&nbsp;things to do</span>"+"<button style='margin-left:50px;width:100px;height:30px;' class='bt4'>Complete</button>");}
-             }
-             if(x==0)
-             {
-              $(".bt4,#s2").remove(); 
-             }                                                              
-             });    
-                     
-                              });     
-          
-
-            
-                                                      
-
+      else{
+        console.log('else');
+          $(".complete,#s2").remove(); 
+          x--;
+      }          
+    });
+    $(document).on("click", "button.done" , function() {
+      // $(this).parent().wrap("<strike>");
+      var checked = $(this).parent();
+      checked.children("#s4").css("text-decoration","line-through");
+      checked.children("#s4").fadeTo("slow",0.4);                                                     
+    });                     
+  });     
 </script>
-    								
-
-
 <style>
 .oi{
   	  border: 1px solid #bdc7d8;
@@ -79,12 +74,22 @@ x=0;
       width:500px;
       margin-left: 29%
       }
+      .es{font-size:20px;
+        padding-top:5px;
+        margin-top:10px;
+        color:#353638;
+        background-color:#f10026;
+        width:490px;
+        height:40px;
+        align-items: center;
+        margin-left:27%;
+        border:1px solid #dcdcdc;}
   	
 </style>
 <body style="background-color:white;text-align: center">
 	   <input type="text" placeholder="Enter the things to do" class="oi ep" id="test" value ="" style="margin-top:50px;">
 	   <button id="bt1"> Enter</button>
-	   <ol  id="e"></ol>
+	   <ul  id="e"></ul>
 	   <p id="r"  class="oi i"></p>    
 </body>
 </html>

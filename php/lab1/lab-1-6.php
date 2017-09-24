@@ -2,6 +2,10 @@
 
 $string="PHP is a widely-used open source general-purpose scripting language.";
 
-print_r (explode(" ",$string));
+$var= explode(" ",$string);
 
+for($i=0;$i<count($var);$i++){
+	echo $var[$i];
+	echo " ";
+}
 ?>
