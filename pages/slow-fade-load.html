@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>load</title>
+</head>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!-- <script src="jquery.js"></script> -->
+<!-- <script src="jquery.lazyload.js"></script> -->
+<script type="text/javascript">
+	
+$(document).ready(function(){
+   							 $( window ).scroll(function(){
+   							 						$("#thr").fadeIn(14000);
+   							 						$("#six").fadeIn(7000);
+   							 						$("#two").fadeIn(10000);
+
+   							 							});
+   							 });
+</script>
+<style> 
+.xi{
+  width: 600px;
+  height: 450px;
+  background: url(loading.gif) 50% no-repeat;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+</style>
+<body style="align-items: center;overflow:scroll;background-color: #ec0033">
+  <p style="text-align :center;font-size: 50px; font-family: Times;color:#dcf900;">Slow Fade</p>
+  <p><img src="http://gameofthronesseason7.net/wp-content/uploads/2016/11/game_of_thrones_season_7_Episode_4_stream_online-1.jpg" id="fir" style="padding:20px;margin:20px;width:400px;height:400px;margin-left:450px;" >
+
+ <img src="http://gameofthronesseason7.net/wp-content/uploads/2016/11/game_of_thrones_season_7_Episode_4_stream_online-1.jpg" id="fiv" style="padding:20px;margin:20px;width:400px;height:400px;margin-left:450px;" >
+
+  <img src="http://gameofthronesseason7.net/wp-content/uploads/2016/11/game_of_thrones_season_7_Episode_4_stream_online-1.jpg" id="six" style="padding:20px;margin:20px;width:400px;height:400px;margin-left:450px;display:none;" > 
+
+  <img src="http://gameofthronesseason7.net/wp-content/uploads/2016/11/game_of_thrones_season_7_Episode_4_stream_online-1.jpg" id="two" style="padding:20px;margin:20px;width:400px;height:400px;margin-left:450px;display:none;"></p>
+
+  <img src="http://gameofthronesseason7.net/wp-content/uploads/2016/11/game_of_thrones_season_7_Episode_4_stream_online-1.jpg" id="thr" style="padding:20px;margin:20px;width:400px;height:400px;margin-left:450px;display:none;"> 
+
+</body>
+</html>
